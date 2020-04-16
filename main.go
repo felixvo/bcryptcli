@@ -20,14 +20,16 @@ func main() {
 	//  Global Flags
 	app.Flags = []cli.Flag{
 		&cli.StringFlag{
-			Name:  "cost",
-			Value: "10",
-			Usage: "Cost of bcrypt",
+			Name:    "cost",
+			Aliases: []string{"c"},
+			Value:   "10",
+			Usage:   "Cost of bcrypt",
 		},
 		&cli.StringFlag{
-			Name:  "pass, p",
-			Value: "",
-			Usage: "Password to check",
+			Name:    "pass",
+			Aliases: []string{"p"},
+			Value:   "",
+			Usage:   "Password to check",
 		},
 	}
 	app.Action = func(c *cli.Context) error {

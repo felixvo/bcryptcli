@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"go-moco/kit/logger"
 	"log"
 	"os"
 	"sort"
@@ -20,12 +19,12 @@ func main() {
 	app.Version = "1.0.0"
 	//  Global Flags
 	app.Flags = []cli.Flag{
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:  "cost",
 			Value: "10",
 			Usage: "Cost of bcrypt",
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:  "pass, p",
 			Value: "",
 			Usage: "Password to check",
@@ -35,7 +34,7 @@ func main() {
 		if c.NArg() <= 0 {
 			return fmt.Errorf("%v", Red("invalid argument"))
 		}
-		checkPass := c.GlobalString("pass")
+		checkPass := c.String("pass")
 		if checkPass != "" {
 			hash := c.Args().Get(0)
 			if ComparePasswords(hash, []byte(checkPass)) {
@@ -45,7 +44,7 @@ func main() {
 			}
 
 		} else {
-			cost := c.GlobalInt("cost")
+			cost := c.Int("cost")
 			rawPWD := c.Args().Get(0)
 			fmt.Print(HashAndSalt([]byte(rawPWD), cost))
 		}
@@ -69,7 +68,7 @@ func HashAndSalt(pwd []byte, cost int) string {
 	// than the MinCost (4)
 	hash, err := bcrypt.GenerateFromPassword(pwd, cost)
 	if err != nil {
-		logger.McLog.Error(err)
+		log.Println(err)
 		return ""
 	}
 	// GenerateFromPassword returns a byte slice so we need to

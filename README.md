@@ -1,4 +1,5 @@
 ## Description
+![Bcrypt CLI](https://raw.githubusercontent.com/felixvo/homebrew-bcrypt/master/terminal.svg)
 
 Bcrypt CLI encode/check match bcrypt
 
@@ -13,13 +14,13 @@ $ brew install bcryptcli
 #### Encode
 
 ```bash
-bcryptcli your-password
+bcrypt your-password
 $2a$10$Q5psIIboePHnIKI4vBKKNOWdOX3o9tnwVtaSEgQW4rRKNMDftQFVm
 ```
 
 #### Check match
 
 ```bash
-bcryptcli -p your-password '$2a$10$hWePochhBRiLLGMdA9c04.0LcUGoobW7bjnbxpFT.ib6jlnCIlJ/6'
+bcrypt -p your-password '$2a$10$hWePochhBRiLLGMdA9c04.0LcUGoobW7bjnbxpFT.ib6jlnCIlJ/6'
 MATCH
 ```

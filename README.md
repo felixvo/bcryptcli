@@ -1,5 +1,6 @@
 ## Description
-![Bcrypt CLI](https://raw.githubusercontent.com/felixvo/homebrew-bcrypt/master/terminal.svg)
+
+![Bcrypt CLI](./terminal.svg)
 
 Bcrypt CLI encode/check match bcrypt
 
